@@ -11,19 +11,22 @@
 ## 1.1 四元数的定义
 
 cayley-dickson给出四元数的一种定义，即存在两个复数
-<!-- $ c = \sqrt{a^{2}+b_{xy}^{2}+e^{x}} $
-$$ c = \sqrt{a^{2}+b_{xy}^{2} +e^{x}} $$ -->
-$ A = a + bi $ 和$ C = c+di$然后即可构造出$Q=A+Cj$ 并且定义$k \triangleq ij$，即可得四元数空间$\mathbb{H}$下的一个数
-$$ Q = a+bi+cj+dk\in \mathbb{H} (1)
+$A = a + bi $ 和$C = c+di$然后即可构造出$Q=A+Cj$ 并且定义$k \triangleq ij$，即可得四元数空间$\mathbb{H}$下的一个数
+$$ 
+\begin{equation}
+    Q = a+bi+cj+dk\in \mathbb{H} 
+\end{equation}
 $$其中$\{a,b,c,d\}\in \mathbb{R}$,$\{i,j,k\}$这三个虚数单位有如下性质：
 $$ i^2=j^2=k^2=ijk=-1, 
 $$同时可以得到：
 $$ ij=-ji=k, jk=-kj=i, ki=-ik=j. 
 $$从式（1），我们可以在四元数定义中嵌入虚数也就是实数和虚数，也即实数、虚数和复数均为四元数，
 $$ 
-   Q =a \in \mathbb{R} \subset \mathbb{H},
+\begin{equation}
+    Q =a \in \mathbb{R} \subset \mathbb{H},
    \\Q =bi \in \mathbb{I} \subset \mathbb{H},
    \\Q =a+bi \in \mathbb{Z} \subset \mathbb{H}.
+\end{equation}
 $$同样的，可以在$\mathbb{H}$的三维空间子集中定义纯虚数以示完备性，同时记$\mathbb{H}_p = Im(\mathbb{H})$为纯虚数空间，
 $$
     Q = bi+cj+dk \in \mathbb{H}_p \subset\mathbb{H}.   (4)
@@ -163,5 +166,130 @@ $$其中$\textbf{u} = u_xi+u_yj+u_zk$为单位向量，$\theta$为常量。
 如(28),具有乘积运算的单位四元数构成一个非交换集，其中逆和共轭相同。
 
 ## 1.3 其他性质
-### 1.3.1 
+### 1.3.1 四元数转换
+定义一个四元数转换为$\left[\textbf{q},\textbf{q}\right]\triangleq\textbf{p}
+\otimes\textbf{q}-\textbf{q}\otimes\textbf{p}$.从式13可得:
+$$
+\textbf{p}\otimes\textbf{q}-\textbf{q}\otimes\textbf{p}=
+2\textbf{p}_v\times\textbf{q}_v.
+$$加上下标，
+$$
+\textbf{p}_v\otimes\textbf{q}_v-\textbf{q}_v\otimes\textbf{p}_v=
+2\textbf{p}_v\times\textbf{q}_v.
+$$后面会用到这个变换
+### 1.3.2 纯四元数乘积
+纯四元数无实数部分，即$Q=\textbf{q}_v$或者$\textbf{q}=\left[0,\textbf{q}_v\right]$，由式13,可得：
+$$
+\textbf{p}_v\otimes\textbf{q}_v = -\textbf{p}_v^{\top}\textbf{q}_v+\textbf{p}_v\times\textbf{q}_v = 
+\begin{bmatrix}
+    -\textbf{p}_v^{\top}\textbf{q}_v \\
+    \textbf{p}_v\times\textbf{q}_v
+\end{bmatrix}
+$$从而
+$$
+\textbf{p}_v\otimes\textbf{q}_v = -\textbf{q}_v^{\top}\textbf{q}_v = -\left \|\textbf{q}_v  \right \|
+ ^2$$同时对于纯单位四元数$u\in \mathbb{H}_p,\left \| \textbf{u} \right \|=1$有
+ $$
+ \textbf{u}\otimes\textbf{u} = -1
+ $$与虚数乘积$i\cdot i=-1$类似
 
+ ### 1.3.3 纯四元数的自然数幂
+ 定义$\textbf{q}^n , n\in \mathbb{N}$为$\otimes$运算下四元数$\textbf{q}$的n次幂。
+即，当$\textbf{v}$是纯虚数时，可以定义$\textbf{v}=\textbf{u}\theta$,其中$\theta = \left \|\textbf{v}\right \|\in \mathbb{R}$$\textbf{u}$为虚数单位，即可由式36得
+$$
+\textbf{v}^2=-\theta ^2,
+\textbf{v}^3=\textbf{u}\theta ^3,
+\textbf{v}^4=\theta ^4,
+\textbf{v}^5=\textbf{u}\theta ^5,
+\textbf{v}^6=-\theta ^6,
+, \cdots 
+$$
+### 1.3.4 纯四元数指数
+四元数指数是一个类似于普通指数函数的四元数上的函数。和实指数的情况完全一样，它被定义为绝对收敛的幂级数
+$$
+\textbf{e}^\textbf{q} \triangleq \sum_{k=0}^{\infty}\frac{1}{k!} \textbf{q}^k \in \mathbb{H}
+$$显然，实四元数的指数与普通指数函数完全一致。
+而纯虚数指数定义如下
+$$
+\textbf{e}^\textbf{v} = \sum_{k=0}^{\infty}\frac{1}{k!} \textbf{v}^k \in \mathbb{H}
+$$设$\textbf{v}=\textbf{u}\theta$其中$\theta = \left\| \textbf{v}\right\|\in \mathbb{R}$，$\textbf{u}$为虚数单位，由式38,将级数中的标量和向量项分组即有
+$$
+e^{\textbf{u}\theta}=(1-\frac{\theta^{2}}{2!}+\frac{\theta^4}{4!}+\cdots)+(\textbf{u}\theta-\frac{\textbf{u}\theta^3}{3!}+\frac{\textbf{u}\theta^5}{5!} +\cdots )
+$$可以看出上式分别为余弦和正弦级数，因此可得
+$$
+e^\textbf{v} = e^{\textbf{u}\theta} = \cos\theta+\textbf{u}\sin\theta = 
+\begin{bmatrix}
+    \cos\theta\\
+    \textbf{u}\sin\theta
+\end{bmatrix}
+$$上式是欧拉公式的一个较优美的扩展形式，即对于虚数定义有$e^{i\theta}=\cos\theta+i\sin\theta$.
+需要注意的是，由于$\left \| e^\textbf{v}\right \| ^2=\cos ^2 \theta+\sin ^2 \theta=1$,纯四元数的指数是单位四元数，即有属性
+$$
+e^{-\textbf{v}} = (e^\textbf{v})^*
+$$对于小角度四元数，为避免$\textbf{u}=\textbf{v}/\left\|\textbf{v}\right\|$时除数为0，可使用$\sin\theta$和$\cos\theta$的泰勒级数来近似表达。即
+$$
+e^\textbf{v}\approx \begin{bmatrix}
+    1-\theta^2/2\\
+    \textbf{v}(1-\theta^2/6)
+\end{bmatrix} \approx\begin{bmatrix}
+    1\\\textbf{v}
+\end{bmatrix}\underset{\theta\rightarrow 0}{\rightarrow}\begin{bmatrix}
+    1\\ \textbf{0}
+\end{bmatrix}
+$$ 
+### 1.3.5 一般四元数的指数
+由于四元数乘积运算的非交换性，不能给出一般四元数$\textbf{q}和\textbf{p}$的运算$e^{\textbf{p}+\textbf{q}}=e^{\textbf{p}}e^{\textbf{q}}$.不过当某一乘积元素为标量时，交换性成立也即有
+$$
+e^{\textbf{q}} = e^{q_w+\textbf{q}_v} = e^{q_w}e^{\textbf{q}_v}
+$$同时，令$\textbf{u}\theta=\textbf{q}_v$,可以得到
+$$
+e^{\textbf{q}}=e^{q_w}\begin{bmatrix}
+    \cos \left\|\textbf{q}_v\right\|\\
+    \frac{\textbf{q}_v}{\left\|\textbf{q}_v\right\|}\sin \left\|\textbf{q}_v\right\|
+\end{bmatrix}
+\tag{46}
+$$
+### 1.3.6 单位四元数的对数
+若$\left\|\textbf{q}\right\|=1$,显然有
+$$
+\log\textbf{q} = \log(\cos\theta+\textbf{u}\sin\theta) = 
+\log(e^{\textbf{u}\theta}) = \textbf{u}\theta = \begin{bmatrix}
+    0\\\textbf{u}\theta
+\end{bmatrix}\tag{47}
+$$也即单位四元数的对数为纯四元数，由式(42)可得到角轴值
+$$
+    \textbf{u} = \textbf{q}_v/\left\|\textbf{q}_v\right\| 
+    \tag{48}
+$$$$   
+\theta = \arctan(\left\|\textbf{q}_v\right\|,q_w)
+    \tag{49}
+$$对于小角度四元数，可以通过$\arctan(x)$的泰勒级数来逼近表示
+$$
+\log(\textbf{q}) = \textbf{u}\theta = \textbf{q}_v
+\frac{\arctan(\left\|\textbf{q}_v\right\|,q_w)}{\left\|\textbf{q}_v\right\|}\approx
+\frac{\textbf{q}_v}{q_w}(1-\frac{\left\|\textbf{q}_v\right\| ^2}{3q_w^2})\approx\textbf{q}_v \overset{\theta\rightarrow 0}{\rightarrow}0
+\tag{50}
+$$
+### 1.3.7 一般四元数对数
+若$\textbf{q}$是一般四元数，可得：
+$$
+\log\textbf{q}=\log(\left\|\textbf{q}\right\|\frac{\textbf{q}}{\left\|\textbf{q}\right\|})
+ = \log\left\|\textbf{q}\right\|+\log\frac{\textbf{q}}{\left\|\textbf{q}\right\|}
+ = \log\left\|\textbf{q}\right\| + \textbf{u}\theta
+ = \begin{bmatrix}
+     \log\left\|\textbf{q}\right\|
+     ||\textbf{u}\theta
+ \end{bmatrix}\tag{51}
+ $$
+### 1.3.8 $\textbf{q}_t$类型的指数形式
+有$\textbf{q}\in\mathbb{H},t\in\mathbb{R}$
+$$
+ \textbf{q}^t = \exp(\log(\textbf{q}^t))
+  = \exp(t\log(\textbf{q}))\tag{52}
+$$若$\left\|\textbf{q}\right\|=1$,有$\textbf{q}=\left[\cos\theta,\textbf{u}\sin\theta\right]$,因此$\log(\textbf{q})=\textbf{u}\theta$
+,可以给出
+$$
+\textbf{q}^t = \exp(t\textbf{u}\theta) = \begin{bmatrix}
+    \cos t\theta\\ \textbf{u}\theta
+\end{bmatrix}\tag{53}
+$$
