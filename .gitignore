@@ -4,3 +4,4 @@ log
 *.log
 *.aux
 .vscode
+*.pgf
